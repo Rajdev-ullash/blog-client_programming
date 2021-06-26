@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import AllHome from "./Components/AllHome/AllHome";
+import BlogDetails from "./Components/AllHome/Blog/BlogDetails/BlogDetails";
+import CreateBlog from "./Components/AllHome/Blog/CreateBlog/CreateBlog";
+import Dashboard from "./Components/AllHome/Dashboard/Dashboard";
+import ManageBlog from './Components/AllHome/Blog/ManageBlog/ManageBlog'
+import Login from "./Components/AllHome/Authentication/Login";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <AllHome></AllHome>
+          </Route>
+          <Route path="/home">
+            <AllHome></AllHome>
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard></Dashboard>
+          </Route>
+          <Route path="/createBlog">
+            <CreateBlog></CreateBlog>
+          </Route>
+          <Route path="/blog/:_id">
+            <BlogDetails></BlogDetails>
+          </Route>
+          <Route path="/manageblog">
+            <ManageBlog></ManageBlog>
+          </Route>
+          <Route path="/login">
+            <Login></Login>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
