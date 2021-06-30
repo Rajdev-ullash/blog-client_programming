@@ -8,7 +8,7 @@ const BlogDetails = () => {
     const [BlogInfo, setBlogInfo] = useState([]);
     console.log(BlogInfo);
     useEffect(() =>{
-        fetch('http://localhost:5000/showBlog')
+        fetch('https://desolate-lowlands-32787.herokuapp.com/showBlog')
         .then(res => res.json())
         .then(data => setBlogInfo(data))
     }, [])

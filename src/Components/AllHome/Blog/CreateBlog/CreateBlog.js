@@ -23,7 +23,7 @@ const CreateBlog = () => {
             // ...loggedIn,
             postTime: new Date()
         }
-        const url = `http://localhost:5000/blogPost`
+        const url = `https://desolate-lowlands-32787.herokuapp.com/blogPost`
         fetch(url, {
             method: 'POST',
             headers: {

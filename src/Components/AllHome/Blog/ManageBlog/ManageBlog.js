@@ -7,14 +7,14 @@ const ManageService = () => {
     console.log(manageBlog)
     // console.log(servicess.name)
     useEffect(() =>{
-        fetch('http://localhost:5000/showBlog')
+        fetch('https://desolate-lowlands-32787.herokuapp.com/showBlog')
         .then(res => res.json())
         .then(data => setmanageBlog(data))
     }, [manageBlog])
 
 
     const deleteEvent = (id) => {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://desolate-lowlands-32787.herokuapp.com/delete/${id}`, {
             method: 'DELETE',
         })
             .then(response => response.json())

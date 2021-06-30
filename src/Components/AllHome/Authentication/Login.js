@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import { infocontext } from '../../../App';
 
 
 const Login = () => {
+
+    const [logged, setLogged] = useContext(infocontext);
     
+    
+    let history= useHistory();
     const { register, handleSubmit, errors } = useForm();
     
     const onSubmit = data => {
         console.log(data);
 
-        fetch(`http://localhost:5000/login`, {
+        fetch(`https://desolate-lowlands-32787.herokuapp.com/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -18,10 +24,13 @@ const Login = () => {
         }).then(response => response.json())
             .then(data => {
                 console.log(data)
-                alert('successfully login as administrator')
+                setLogged(data.admin);
+                alert('successfully login as administrator');
+                history.push('/home');
             })
 
     };
+    console.log(logged)
 
     return (
         <div>

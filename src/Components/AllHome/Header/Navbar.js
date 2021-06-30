@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { infocontext } from "../../../App";
 
 const Navbar = () => {
+  const [logged, setLogged] = useContext(infocontext);
+  console.log(logged);
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -15,12 +18,16 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link active text-dark" aria-current="page" to="/">Home</Link>
               </li>
-              <li className="nav-item">
+              {
+                logged && <li className="nav-item">
                 <Link className="nav-link text-dark" to="/dashboard">Dashboard</Link>
-              </li>
-              <li className="nav-item">
+              </li> 
+              }
+              {
+                logged ? <p>{logged}</p> : <li className="nav-item">
                 <Link className="nav-link text-dark" to="/login">Login</Link>
               </li>
+              }
             </ul>
           </div>
         </div>
